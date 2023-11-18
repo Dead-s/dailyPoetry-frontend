@@ -22,9 +22,11 @@ type searchUserData = {
     _id: string;
     content: string;
     createdAt: string;
-    name: {
-        name: string
-    };
+    name: nameObj[];
+}
+type nameObj = {
+    createdAt: string;
+    name: string;
 }
 function Feeds(props: props) {
     const [socialUsername, setSocialUsername] = useState("");
