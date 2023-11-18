@@ -292,6 +292,28 @@ input[type="submit"] {
   font-size: 1.4rem;
   margin-right: 10px;
 }
+.redirect-div{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 15px;
+}
+.userDiv {
+  display: flex;
+  flex-direction: column;
+}
+.userIcon{
+  height: 50px;
+}
+.hyperLinkIcon{
+  text-decoration: none;
+  color: #000000;
+}
+.profileIcon.hyperLinkIcon{
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
 .post-close {
   position: relative;
   right: -10px;

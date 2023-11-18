@@ -1,9 +1,10 @@
-import { useState } from "react"
 import Add_postBtn from "./add_post"
 import Content from "./content"
 import Post_box from "./post_box"
 import Loader from "./loader"
 import ProfileBox from "./profileBox"
+import { useState } from "react"
+import SocialBox from "./socialBox"
 
 type props = {
     userId: string,
@@ -16,9 +17,17 @@ type props = {
     showProfileBox: boolean,
     username: string
 }
-
+type searchUserData = {
+    _id: string;
+    content: string;
+    createdAt: string;
+    name: {
+        name: string
+    };
+}
 function Feeds(props: props) {
-    const [isLoading, setfirst] = useState(false);
+    const [socialUsername, setSocialUsername] = useState("");
+    const [socialBox, setSocialBox] = useState(false);
     return (
         <>
             <div className={`container`} onClick={() => { props.setDropdown(false) }}>
@@ -27,24 +36,18 @@ function Feeds(props: props) {
                     props.showpostbox ?
                         <Post_box setPostbox={props.setPostbox} userId={props.userId} />
                         :
-                        isLoading ?
-                            <Loader />
-                            :
-                            props.showProfileBox ?
-                                <ProfileBox setProfileBox={props.setProfilebox} username={props.username}/> :
+                        props.showProfileBox ?
+                            <ProfileBox setProfileBox={props.setProfilebox} username={props.username} userId={props.userId} /> :
+                            socialBox ?
+                                <SocialBox username={socialUsername} setSocialBox={setSocialBox} />
+                                :
                                 <>
                                     {props.srchdUser.length == 0 ?
-                                        <>
-                                            <Content content="“Giving up smoking is the easiest thing in the world. I know because I’ve done it a thousand times.”" name="Mark Twain" date={"1908-10-22"} />
-                                            <Content content="“No man is an island,Entire of itself,Every man is a piece of the continent,A part of the main.
-                                        If a clod be washed away by the sea,Europe is the less.
-                                        As well as if a promontory were. as if a manor of thy friend’s Or of thine own were:
-                                        Any man’s death diminishes me, Because I am involved in mankind,
-                                        And therefore never send to know for whom the bell tolls;It tolls for thee.”" name="John Donne" date={"1925-03-19"} />
-                                        </> :
-
-                                        props.srchdUser.map((obj) => {
-                                            return <Content key={obj["_id"]} content={obj["content"]} date={obj["createdAt"]} name={obj["name"][0]["name"]} />
+                                        <Loader />
+                                        :
+                                        props.srchdUser.map((obj: searchUserData) => {
+                                            return <Content setSocialUsername={setSocialUsername} setSocialBox={setSocialBox} username={obj["name"][0]["name"]}
+                                                key={obj["_id"]} content={obj["content"]} date={obj["createdAt"]} name={obj["name"][0]["name"]} />
                                         })
                                     }
                                 </>

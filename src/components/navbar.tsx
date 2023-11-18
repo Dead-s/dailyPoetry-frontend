@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import { useEffect } from 'react';
 
 type props = {
     setDropdown: React.Dispatch<React.SetStateAction<boolean>>,
@@ -20,11 +21,18 @@ function Navbar(props: props) {
         },
         withCredentials: true
     };
+    useEffect(() => {
+        axios.get('http://localhost:5000/addPost').then(res => {
+            console.log(res.data);
+            props.setSrchdUser(res.data);
+        });
+    }, [])
+
     function logout() {
         axios.get('http://localhost:5000/login', config).then(res => {
             console.log(res);
             if (res.data.logout) {
-                navigate("/login");
+                navigate("/home/login");
             }
         });
     }
@@ -34,8 +42,6 @@ function Navbar(props: props) {
                 console.log(res.data);
                 props.setSrchdUser(res.data);
             });
-        } else {
-            props.setSrchdUser([]);
         }
     }
     return (
