@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Add_postBtn from "./add_post"
 import Content from "./content"
 import Post_box from "./post_box"
@@ -45,6 +46,7 @@ function Feeds(props: props) {
                                     {props.srchdUser.length == 0 ?
                                         <Loader />
                                         :
+                                        // @ts-ignore
                                         props.srchdUser.map((obj: searchUserData) => {
                                             return <Content setSocialUsername={setSocialUsername} setSocialBox={setSocialBox} username={obj["name"][0]["name"]}
                                                 key={obj["_id"]} content={obj["content"]} date={obj["createdAt"]} name={obj["name"][0]["name"]} />
