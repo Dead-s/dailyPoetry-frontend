@@ -10,6 +10,6 @@ export default defineConfig({
   //     },
   //   },
   // },
-  base: "http://localhost:5173/home",
+  // base: "http://localhost:5173/home",
   plugins: [react()],
 });
