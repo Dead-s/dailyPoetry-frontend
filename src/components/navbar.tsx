@@ -22,14 +22,14 @@ function Navbar(props: props) {
         withCredentials: true
     };
     useEffect(() => {
-        axios.get('http://localhost:5000/addPost').then(res => {
+        axios.get('https://daily-poetry-backend.vercel.app/addPost').then(res => {
             console.log(res.data);
             props.setSrchdUser(res.data);
         });
     }, [])
 
     function logout() {
-        axios.get('http://localhost:5000/login', config).then(res => {
+        axios.get('https://daily-poetry-backend.vercel.app/login', config).then(res => {
             console.log(res);
             if (res.data.logout) {
                 navigate("/home/login");
@@ -38,7 +38,7 @@ function Navbar(props: props) {
     }
     function searchUser(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.value.trim() != "") {
-            axios.post('http://localhost:5000/addPost', { name: e.target.value }, config).then(res => {
+            axios.post('https://daily-poetry-backend.vercel.app/addPost', { name: e.target.value }, config).then(res => {
                 console.log(res.data);
                 props.setSrchdUser(res.data);
             });

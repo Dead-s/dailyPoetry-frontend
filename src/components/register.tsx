@@ -98,7 +98,7 @@ function Register(props: propsType) {
         }
     }
     async function Create_user() {
-        await axios.post("http://localhost:5000/register", { name: name, password: pass }).then((res) => {
+        await axios.post("https://daily-poetry-backend.vercel.app/register", { name: name, password: pass }).then((res) => {
             if (res.status == 201) {
                 toast.success("Account created successfully!", { position: toast.POSITION.TOP_CENTER, theme: "dark", autoClose: 1000 })
                 console.log(res, 'created')

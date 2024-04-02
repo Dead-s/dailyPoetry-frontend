@@ -26,7 +26,7 @@ function Login(props: propsType) {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:5000/', config).then(res => {
+        axios.get('https://daily-poetry-backend.vercel.app/', config).then(res => {
             if (res.data.auth) {
                 navigate("/home");
             }
@@ -76,7 +76,7 @@ function Login(props: propsType) {
     }
     async function Auth() {
         if (!errarr.nameError && !errarr.passError) {
-            await axios.post("http://localhost:5000/login", { name: name.toLocaleLowerCase(), password: pass, remember: remembeme }, config).then((res) => {
+            await axios.post("https://daily-poetry-backend.vercel.app/login", { name: name.toLocaleLowerCase(), password: pass, remember: remembeme }, config).then((res) => {
                 if (res.status == 200) {
                     toast.success("Logged In", { position: toast.POSITION.TOP_CENTER, theme: "dark", autoClose: 1000 });
                     navigate('/home');

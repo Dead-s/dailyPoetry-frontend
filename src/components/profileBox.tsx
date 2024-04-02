@@ -18,7 +18,7 @@ export default function ProfileBox(props: props) {
         instagram: ""
     });
     useEffect(() => {
-        axios.get('http://localhost:5000/socials', { params: { id: props.userId } }).then(res => {
+        axios.get('https://daily-poetry-backend.vercel.app/socials', { params: { id: props.userId } }).then(res => {
             console.log(res);
             setSocials(crnt => {
                 return { ...crnt, youtube: res.data.youtube, instagram: res.data.instagram, twitterX: res.data.twitterX };
@@ -29,7 +29,7 @@ export default function ProfileBox(props: props) {
     }, [])
 
     function updateSocials() {
-        axios.post('http://localhost:5000/socials', { id: props.userId, socials: socials }).then(res => {
+        axios.post('https://daily-poetry-backend.vercel.app/socials', { id: props.userId, socials: socials }).then(res => {
             console.log(res);
             toast.success("Socials Updated!", { position: toast.POSITION.TOP_CENTER, theme: "dark", autoClose: 1000 })
         }).catch(err => {

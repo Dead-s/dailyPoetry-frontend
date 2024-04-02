@@ -17,7 +17,7 @@ function SocialBox(props: props) {
         instagram: ""
     });
     useEffect(() => {
-        axios.get('http://localhost:5000/socials', { params: { username: props.username } }).then(res => {
+        axios.get('https://daily-poetry-backend.vercel.app/socials', { params: { username: props.username } }).then(res => {
             console.log(res);
             setSocials(crnt => {
                 return { ...crnt, youtube: res.data.youtube, instagram: res.data.instagram, twitterX: res.data.twitterX };

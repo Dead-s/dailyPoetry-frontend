@@ -18,7 +18,7 @@ function setDate(date: string) {
 }
 
 function getSocials(name: string) {
-    axios.get('http://localhost:5000/socials', { params: { username: name } }).then(res => {
+    axios.get('https://daily-poetry-backend.vercel.app/socials', { params: { username: name } }).then(res => {
         console.log(res);
     }).catch(err => {
         console.log(err);

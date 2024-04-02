@@ -16,12 +16,12 @@ function Post_box(props: props) {
         if (content == '') {
             return console.log('empty');
         }
-        // await axios.get('http://localhost:5000/addPost').then((res) => {
+        // await axios.get('https://daily-poetry-backend.vercel.app/addPost').then((res) => {
         //     console.log(res);
         // }).then((e) => {
         //     console.log(e);
         // })
-        await axios.post("http://localhost:5000/addPost", { id: props.userId, content: content }).then((res) => {
+        await axios.post("https://daily-poetry-backend.vercel.app/addPost", { id: props.userId, content: content }).then((res) => {
             if (res.status == 201) {
                 toast.success("Post Added!", { position: toast.POSITION.TOP_CENTER, theme: "dark", autoClose: 1000 })
                 setTimeout(() => {

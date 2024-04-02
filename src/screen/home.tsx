@@ -17,7 +17,7 @@ function Home() {
         withCredentials: true
     };
     useEffect(() => {
-        axios.get('http://localhost:5000/', config).then(res => {
+        axios.get('https://daily-poetry-backend.vercel.app/', config).then(res => {
             if (res.data.auth) {
                 setUsername(res.data.name);
                 setUserID(res.data.userId);
